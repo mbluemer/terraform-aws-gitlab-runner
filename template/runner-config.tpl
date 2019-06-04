@@ -25,6 +25,8 @@ check_interval = 0
     Shared = ${shared_cache}
     [runners.cache.s3]
       ServerAddress = "s3.amazonaws.com"
+      AccessKey = "${access_key}"
+      SecretKey = "${secret_key}"
       BucketName = "${bucket_name}"
       BucketLocation = "${aws_region}"
       Insecure = false

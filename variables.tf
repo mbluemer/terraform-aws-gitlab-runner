@@ -225,6 +225,18 @@ variable "cache_bucket_prefix" {
   default     = ""
 }
 
+variable "cache_bucket_access_key" {
+  description = "AWS access key to access bucket cache."
+  type        = "string"
+  default     = ""
+}
+
+variable "cache_bucket_secret_key" {
+  description = "AWS secret key to access bucket cache."
+  type        = "string"
+  default     = ""
+}
+
 variable "cache_bucket_versioning" {
   description = "Boolean used to enable versioning on the cache bucket, false by default."
   type        = "string"

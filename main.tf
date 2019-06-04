@@ -180,6 +180,8 @@ data "template_file" "runners" {
     runners_request_concurrency       = "${var.runners_request_concurrency}"
     runners_output_limit              = "${var.runners_output_limit}"
     bucket_name                       = "${aws_s3_bucket.build_cache.bucket}"
+    access_key                        = "${var.cache_bucket_access_key}"
+    secret_key                        = "${var.cache_bucket_secret_key}"
     shared_cache                      = "${var.cache_shared}"
   }
 }
