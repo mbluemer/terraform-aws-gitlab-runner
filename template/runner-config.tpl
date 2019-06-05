@@ -18,7 +18,7 @@ check_interval = 0
     image = "${runners_image}"
     privileged = ${runners_privileged}
     disable_cache = false
-    volumes = ["/cache"]
+    volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]
     shm_size = ${runners_shm_size}
   [runners.cache]
     Type = "s3"
