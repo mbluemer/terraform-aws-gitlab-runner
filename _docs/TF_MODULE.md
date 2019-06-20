@@ -7,7 +7,9 @@
 | ami\_owners | The list of owners used to select the AMI of Gitlab runner agent instances. | list | `<list>` | no |
 | aws\_region | AWS region. | string | n/a | yes |
 | aws\_zone | AWS availability zone (typically 'a', 'b', or 'c'). | string | `"a"` | no |
+| cache\_bucket\_access\_key | AWS access key to access bucket cache. | string | `""` | no |
 | cache\_bucket\_prefix | Prefix for s3 cache bucket name. | string | `""` | no |
+| cache\_bucket\_secret\_key | AWS secret key to access bucket cache. | string | `""` | no |
 | cache\_bucket\_versioning | Boolean used to enable versioning on the cache bucket, false by default. | string | `"false"` | no |
 | cache\_expiration\_days | Number of days before cache objects expires. | string | `"1"` | no |
 | cache\_shared | Enables cache sharing between runners, false by default. | string | `"false"` | no |
@@ -19,10 +21,11 @@
 | docker\_machine\_version | Version of docker-machine. | string | `"0.16.1"` | no |
 | enable\_cloudwatch\_logging | Boolean used to enable or disable the CloudWatch logging. | string | `"true"` | no |
 | enable\_gitlab\_runner\_ssh\_access | Enables SSH Access to the gitlab runner instance. | string | `"false"` | no |
-| enable\_manage\_gitlab\_token | Boolean to enable the management of the GitLab token in SSM. If `true` the Gitlab token will be managed via terraform state. If `false` the token will still be stored in SSM however, it will not be managed via terraform. | string | `"true"` | no |
+| enable\_manage\_gitlab\_token | Boolean to enable the management of the GitLab token in SSM. If `true` the token will be stored in SSM, which means the SSM property is a terraform managed resource. If `false` the Gitlab token will be stored in the SSM by the user-data script during creation of the the instance. However the SSM parameter is not managed by terraform and will remain in SSM after a `terraform destroy`. | string | `"true"` | no |
 | environment | A name that identifies the environment, used as prefix and for tagging. | string | n/a | yes |
 | gitlab\_runner\_registration\_config | Configuration used to register the runner. See the README for an example, or reference the examples in the examples directory of this repo. | map | `<map>` | no |
-| gitlab\_runner\_ssh\_cidr\_blocks | List of CIDR blocks to allow SSH Access from to the gitlab runner instance. | list | `<list>` | no |
+| gitlab\_runner\_ssh\_cidr\_blocks | List of CIDR blocks to allow SSH Access to the gitlab runner instance. | list | `<list>` | no |
+| gitlab\_runner\_ssh\_source\_security\_group\_id | Source security group id to allow SSH Access to the gitlab runner instance. | string | `""` | no |
 | gitlab\_runner\_version | Version of the GitLab runner. | string | `"11.11.2"` | no |
 | instance\_role\_json | Docker machine runner instance override policy, expected to be in JSON format. | string | `""` | no |
 | instance\_role\_runner\_json | Instance role json for the docker machine runners to override the default. | string | `""` | no |
@@ -39,6 +42,7 @@
 | runners\_idle\_time | Idle time of the runners, will be used in the runner config.toml. | string | `"600"` | no |
 | runners\_image | Image to run builds, will be used in the runner config.toml | string | `"docker:18.03.1-ce"` | no |
 | runners\_limit | Limit for the runners, will be used in the runner config.toml. | string | `"0"` | no |
+| runners\_max\_build | Count of builds after which the machine will be removed | string | `"1000"` | no |
 | runners\_monitoring | Enable detailed cloudwatch monitoring for spot instances. | string | `"false"` | no |
 | runners\_name | Name of the runner, will be used in the runner config.toml. | string | n/a | yes |
 | runners\_off\_peak\_idle\_count | Off peak idle count of the runners, will be used in the runner config.toml. | string | `"0"` | no |

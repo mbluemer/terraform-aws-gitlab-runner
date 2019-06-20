@@ -54,4 +54,5 @@ check_interval = 0
     OffPeakTimezone = "${runners_off_peak_timezone}"
     OffPeakIdleCount = ${runners_off_peak_idle_count}
     OffPeakIdleTime = ${runners_off_peak_idle_time}
+    MaxBuilds = "${runners_max_builds}"
     ${runners_off_peak_periods_string}

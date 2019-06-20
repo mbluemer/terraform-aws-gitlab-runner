@@ -146,6 +146,11 @@ variable "runners_off_peak_periods" {
   default     = ""
 }
 
+variable "runners_max_build" {
+  description = "Count of builds after which the machine will be removed"
+  default     = 1000
+}
+
 variable "runners_root_size" {
   description = "Runner instance root size in GB."
   default     = 16
