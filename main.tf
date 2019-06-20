@@ -169,7 +169,7 @@ data "template_file" "runners" {
     runners_off_peak_timezone         = "${var.runners_off_peak_timezone}"
     runners_off_peak_idle_count       = "${var.runners_off_peak_idle_count}"
     runners_off_peak_idle_time        = "${var.runners_off_peak_idle_time}"
-    runners_max_build                 = "${var.runners_max_build}"
+    runners_max_builds                = "${var.runners_max_builds}"
     runners_off_peak_periods_string   = "${local.runners_off_peak_periods_string}"
     runners_root_size                 = "${var.runners_root_size}"
     runners_iam_instance_profile_name = "${var.runners_iam_instance_profile_name}"

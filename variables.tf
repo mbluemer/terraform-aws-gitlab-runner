@@ -146,7 +146,7 @@ variable "runners_off_peak_periods" {
   default     = ""
 }
 
-variable "runners_max_build" {
+variable "runners_max_builds" {
   description = "Count of builds after which the machine will be removed"
   default     = 1000
 }
